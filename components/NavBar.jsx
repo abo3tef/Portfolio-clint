@@ -17,7 +17,8 @@ function NavBar() {
   const handleScroll = (id) => {
     const el = document.getElementById(id);
     if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      el.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
     }
   };
 

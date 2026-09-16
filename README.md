@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Portfolio-clint
 
-## Getting Started
+A single-page portfolio website built with **Next.js (App Router)** and **React**.  
+The page is composed of reusable sections (hero, services, experience, projects, testimonials, contact/footer) with animated UI and smooth scrolling behavior.
 
-First, run the development server:
+## Tech Stack
+
+- **Framework:** Next.js 15
+- **UI:** React 19
+- **Styling:** Tailwind CSS 4 (+ `tw-animate-css`)
+- **Animation:** Framer Motion
+- **Smooth Scrolling:** Lenis (`@studio-freight/lenis`)
+- **Slider/Carousel:** Swiper
+- **Icons:** `lucide-react`, `react-icons`
+- **UI utility:** shadcn-style `Button` component with `class-variance-authority`
+
+## Project Structure
+
+- `/app/layout.js` – root layout and global providers
+- `/app/page.js` – main page composition
+- `/app/globals.css` – global styles and design tokens
+- `/components/*` – portfolio sections and shared UI components
+- `/public/*` – static assets (images/SVGs used by sections)
+
+## Installation
+
+```bash
+npm install
+```
+
+## Available npm Scripts
+
+From `package.json`:
+
+- `npm run dev` – start development server (Turbopack)
+- `npm run build` – create production build
+- `npm run start` – run production server
+- `npm run lint` – run Next.js ESLint checks
+
+## Run Locally
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open: `http://localhost:3000`
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Notes for Development
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- This repository currently has **lint/build scripts** but no dedicated automated test script.
+- Smooth scrolling is handled by Lenis in `components/LenisProvider.jsx`.
+- Most section animations are implemented with Framer Motion and `whileInView` transitions.
 
-## Learn More
+## Deployment
 
-To learn more about Next.js, take a look at the following resources:
+Build first:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run build
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Then run:
 
-## Deploy on Vercel
+```bash
+npm run start
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+You can deploy this Next.js app to any platform that supports Node.js (for example Vercel, VPS, or container-based hosting).

@@ -5,6 +5,10 @@ import Lenis from "@studio-freight/lenis";
 
 export default function LenisProvider({ children }) {
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
     const lenis = new Lenis({
       duration: 1.2, 
       smooth: true,
@@ -13,14 +17,16 @@ export default function LenisProvider({ children }) {
       smoothTouch: false,
     });
 
+    let rafId;
     function raf(time) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      rafId = requestAnimationFrame(raf);
     }
 
-    requestAnimationFrame(raf);
+    rafId = requestAnimationFrame(raf);
 
     return () => {
+      cancelAnimationFrame(rafId);
       lenis.destroy(); 
     };
   }, []);
